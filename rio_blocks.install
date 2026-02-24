@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Rio Blocks module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function rio_blocks_install() {
+  \Drupal::messenger()->addStatus(t('Rio Blocks module installed. Two content types have been created: <strong>News</strong> and <strong>Events</strong>, each with Title, Summary, Image, and Date fields. You can now place the "News and Events Block" via Structure &rarr; Block Layout.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function rio_blocks_uninstall() {
+  \Drupal::messenger()->addStatus(t('Rio Blocks module uninstalled.'));
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function rio_blocks_requirements($phase) {
+  $requirements = [];
+
+  if ($phase === 'runtime') {
+    $node_type_storage = \Drupal::entityTypeManager()->getStorage('node_type');
+
+    // Check that the 'news' content type exists.
+    $news_type = $node_type_storage->load('news');
+    if (!$news_type) {
+      $requirements['rio_blocks_news_type'] = [
+        'title' => t('Rio Blocks: News Content Type'),
+        'description' => t('The "News" content type is missing. Please reinstall the Rio Blocks module or create the content type manually.'),
+        'severity' => REQUIREMENT_WARNING,
+      ];
+    }
+    else {
+      $requirements['rio_blocks_news_type'] = [
+        'title' => t('Rio Blocks: News Content Type'),
+        'description' => t('The "News" content type is installed correctly.'),
+        'severity' => REQUIREMENT_OK,
+        'value' => t('OK'),
+      ];
+    }
+
+    // Check that the 'events' content type exists.
+    $events_type = $node_type_storage->load('events');
+    if (!$events_type) {
+      $requirements['rio_blocks_events_type'] = [
+        'title' => t('Rio Blocks: Events Content Type'),
+        'description' => t('The "Events" content type is missing. Please reinstall the Rio Blocks module or create the content type manually.'),
+        'severity' => REQUIREMENT_WARNING,
+      ];
+    }
+    else {
+      $requirements['rio_blocks_events_type'] = [
+        'title' => t('Rio Blocks: Events Content Type'),
+        'description' => t('The "Events" content type is installed correctly.'),
+        'severity' => REQUIREMENT_OK,
+        'value' => t('OK'),
+      ];
+    }
+  }
+
+  return $requirements;
+}
