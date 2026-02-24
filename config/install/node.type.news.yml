@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'News'
+type: news
+description: 'Use this content type for news articles and press releases.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true
