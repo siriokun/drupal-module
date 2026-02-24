@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'News & Events Category'
+vid: news_events_category
+description: 'Categories for News and Events content types.'
+hierarchy: 0
+weight: 0
