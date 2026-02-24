@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Rio Blocks module.
+ *
+ * Provides custom content blocks including the News and Events block.
+ * Two separate content types are created:
+ *   - News: for news articles and press releases.
+ *   - Events: for event announcements and listings.
+ *
+ * Both content types share the same fields:
+ *   - Title (built-in)
+ *   - Summary (field_summary)
+ *   - Image (field_image)
+ *   - Date (field_date)
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function rio_blocks_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.rio_blocks':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Rio Blocks module provides custom content blocks for your Drupal site, including a News and Events block that displays content from the <em>News</em> and <em>Events</em> content types with Title, Summary, Image, and Date fields.') . '</p>';
+      $output .= '<h3>' . t('Content Types') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('News') . '</dt>';
+      $output .= '<dd>' . t('Use this content type for news articles and press releases. Fields: Title, Summary, Image, Date.') . '</dd>';
+      $output .= '<dt>' . t('Events') . '</dt>';
+      $output .= '<dd>' . t('Use this content type for event announcements and listings. Fields: Title, Summary, Image, Date.') . '</dd>';
+      $output .= '</dl>';
+      $output .= '<h3>' . t('Blocks') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('News and Events Block') . '</dt>';
+      $output .= '<dd>' . t('Displays a configurable combined list of News and/or Events nodes. You can choose to show only News, only Events, or both. Configure via Structure &rarr; Block Layout.') . '</dd>';
+      $output .= '</dl>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function rio_blocks_theme($existing, $type, $theme, $path) {
+  return [
+    'rio_blocks_news_events' => [
+      'variables' => [
+        'items' => [],
+        'title' => NULL,
+        'view_all_link' => NULL,
+      ],
+      'template' => 'rio-blocks-news-events',
+    ],
+    'rio_blocks_news_events_item' => [
+      'variables' => [
+        'title' => NULL,
+        'summary' => NULL,
+        'image' => NULL,
+        'date' => NULL,
+        'date_start' => NULL,
+        'date_end' => NULL,
+        'is_date_range' => FALSE,
+        'url' => NULL,
+        'content_type' => NULL,
+        'content_type_label' => NULL,
+        'categories' => [],
+      ],
+      'template' => 'rio-blocks-news-events-item',
+    ],
+  ];
+}

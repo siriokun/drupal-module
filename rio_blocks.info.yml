@@ -1,0 +1,13 @@
+name: 'Rio Blocks'
+type: module
+description: 'Provides custom content blocks including a News and Events block. Creates two separate content types (News and Events) each with Title, Summary, Image, and Date fields.'
+package: 'Custom'
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - drupal:block
+  - drupal:node
+  - drupal:image
+  - drupal:datetime
+  - drupal:datetime_range
+  - drupal:text
+  - drupal:taxonomy

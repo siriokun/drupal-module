@@ -1,0 +1,5 @@
+rio_blocks:
+  version: 1.x
+  css:
+    theme:
+      css/rio_blocks.css: {}
