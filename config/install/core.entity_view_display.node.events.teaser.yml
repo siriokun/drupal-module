@@ -1,0 +1,71 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.events.field_category
+    - field.field.node.events.field_date
+    - field.field.node.events.field_date_end
+    - field.field.node.events.field_image
+    - field.field.node.events.field_summary
+    - node.type.events
+  module:
+    - datetime
+    - datetime_range
+    - image
+    - taxonomy
+    - text
+id: node.events.teaser
+targetEntityType: node
+bundle: events
+mode: teaser
+content:
+  field_image:
+    type: image
+    label: hidden
+    weight: 0
+    region: content
+    settings:
+      image_style: medium
+      image_link: content
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+  field_date_end:
+    type: datetime_default
+    label: above
+    weight: 1
+    region: content
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+  field_date:
+    type: datetime_default
+    label: hidden
+    weight: 2
+    region: content
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+  field_category:
+    type: entity_reference_label
+    label: hidden
+    weight: 3
+    region: content
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_summary:
+    type: text_default
+    label: hidden
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

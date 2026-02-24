@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_end
+    - node.type.events
+  module:
+    - datetime
+id: node.events.field_date_end
+field_name: field_date_end
+entity_type: node
+bundle: events
+label: 'Event End Date'
+description: 'The end date for this event. Leave blank for single-day events.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
