@@ -1,0 +1,82 @@
+{#
+/**
+ * @file
+ * Template for a single News or Events item.
+ *
+ * Available variables:
+ * - title: The node title.
+ * - url: The node URL.
+ * - content_type: The content type machine name ('news' or 'events').
+ * - content_type_label: The human-readable content type label.
+ * - summary: The summary text (render array).
+ * - image: The image (render array).
+ * - date: The primary formatted date string (start date for events).
+ * - date_start: The formatted event start date (events only).
+ * - date_end: The formatted event end date (events only, may be NULL).
+ * - is_date_range: Boolean, TRUE if this item has a date range.
+ * - categories: An array of category items, each with:
+ *   - label: The term name.
+ *   - url: The term URL.
+ *   - tid: The term ID.
+ *
+ * @see template_preprocess_rio_blocks_news_events_item()
+ */
+#}
+<article class="rio-blocks-news-events__item rio-blocks-news-events__item--{{ content_type }}">
+  {% if image %}
+    <div class="rio-blocks-news-events__image">
+      <a href="{{ url }}" aria-hidden="true" tabindex="-1">
+        {{ image }}
+      </a>
+    </div>
+  {% endif %}
+
+  <div class="rio-blocks-news-events__content">
+    <div class="rio-blocks-news-events__meta">
+      {% if content_type_label %}
+        <span class="rio-blocks-news-events__type-badge rio-blocks-news-events__type-badge--{{ content_type }}">
+          {{ content_type_label }}
+        </span>
+      {% endif %}
+
+      {% if categories %}
+        <ul class="rio-blocks-news-events__categories">
+          {% for category in categories %}
+            <li class="rio-blocks-news-events__category">
+              <a href="{{ category.url }}" class="rio-blocks-news-events__category-link">{{ category.label }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    {% if is_date_range and date_start %}
+      <div class="rio-blocks-news-events__date rio-blocks-news-events__date--range">
+        <time class="rio-blocks-news-events__date-start">{{ date_start }}</time>
+        {% if date_end %}
+          <span class="rio-blocks-news-events__date-separator" aria-hidden="true">–</span>
+          <time class="rio-blocks-news-events__date-end">{{ date_end }}</time>
+        {% endif %}
+      </div>
+    {% elseif date %}
+      <div class="rio-blocks-news-events__date">
+        <time>{{ date }}</time>
+      </div>
+    {% endif %}
+
+    <h3 class="rio-blocks-news-events__item-title">
+      <a href="{{ url }}">{{ title }}</a>
+    </h3>
+
+    {% if summary %}
+      <div class="rio-blocks-news-events__summary">
+        {{ summary }}
+      </div>
+    {% endif %}
+
+    <a href="{{ url }}" class="rio-blocks-news-events__read-more">
+      {{ 'Read More'|t }}
+      <span class="visually-hidden"> {{ 'about'|t }} {{ title }}</span>
+    </a>
+  </div>
+</article>

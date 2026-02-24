@@ -1,0 +1,453 @@
+/**
+ * @file
+ * Styles for the Rio Blocks module - News and Events block.
+ */
+
+/* ============================================================
+   News and Events Block - Container
+   ============================================================ */
+.rio-blocks-news-events {
+  margin: 0 0 2rem;
+}
+
+/* ============================================================
+   News and Events Block - Header
+   ============================================================ */
+.rio-blocks-news-events__header {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.75rem;
+}
+
+.rio-blocks-news-events__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+/* ============================================================
+   News and Events Block - List
+   ============================================================ */
+.rio-blocks-news-events__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   News and Events Block - Item
+   ============================================================ */
+.rio-blocks-news-events__item {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.rio-blocks-news-events__item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================
+   News-specific Item Styling
+   ============================================================ */
+.rio-blocks-news-events__item--news {
+  border-top: 3px solid #0056b3;
+}
+
+.rio-blocks-news-events__item--news:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 86, 179, 0.15);
+}
+
+.rio-blocks-news-events__item--news .rio-blocks-news-events__image {
+  filter: grayscale(20%);
+}
+
+.rio-blocks-news-events__item--news:hover .rio-blocks-news-events__image {
+  filter: grayscale(0%);
+}
+
+.rio-blocks-news-events__item--news .rio-blocks-news-events__content {
+  background: linear-gradient(to bottom, #ffffff, #f8faff);
+}
+
+/* ============================================================
+   Events-specific Item Styling
+   ============================================================ */
+.rio-blocks-news-events__item--events {
+  border-top: 3px solid #28a745;
+  background: linear-gradient(to bottom, #ffffff, #f0fff4);
+}
+
+.rio-blocks-news-events__item--events:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.2);
+}
+
+.rio-blocks-news-events__item--events .rio-blocks-news-events__image {
+  position: relative;
+}
+
+.rio-blocks-news-events__item--events .rio-blocks-news-events__image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(40, 167, 69, 0.15), transparent);
+  pointer-events: none;
+}
+
+.rio-blocks-news-events__item--events .rio-blocks-news-events__content {
+  border-left: 2px solid #28a745;
+  padding-left: calc(1.25rem - 2px);
+}
+
+.rio-blocks-news-events__item--events .rio-blocks-news-events__item-title {
+  font-size: 1.25rem;
+}
+
+/* ============================================================
+   News and Events Block - Image
+   ============================================================ */
+.rio-blocks-news-events__image {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.rio-blocks-news-events__image a {
+  display: block;
+  height: 100%;
+}
+
+.rio-blocks-news-events__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.rio-blocks-news-events__item:hover .rio-blocks-news-events__image img {
+  transform: scale(1.05);
+}
+
+/* ============================================================
+   News and Events Block - Content
+   ============================================================ */
+.rio-blocks-news-events__content {
+  padding: 1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ============================================================
+   News and Events Block - Meta (badge + categories row)
+   ============================================================ */
+.rio-blocks-news-events__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   News and Events Block - Categories
+   ============================================================ */
+.rio-blocks-news-events__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rio-blocks-news-events__category {
+  display: inline-block;
+}
+
+.rio-blocks-news-events__category-link {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #555555;
+  background-color: #f0f0f0;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  padding: 0.15em 0.5em;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.rio-blocks-news-events__category-link:hover,
+.rio-blocks-news-events__category-link:focus {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ============================================================
+   News and Events Block - Content Type Badge
+   ============================================================ */
+.rio-blocks-news-events__type-badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2em 0.6em;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  background-color: #555555;
+}
+
+.rio-blocks-news-events__type-badge--news {
+  background-color: #0056b3;
+}
+
+.rio-blocks-news-events__type-badge--events {
+  background-color: #28a745;
+}
+
+/* ============================================================
+   News and Events Block - Date
+   ============================================================ */
+.rio-blocks-news-events__date {
+  font-size: 0.8125rem;
+  color: #666666;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rio-blocks-news-events__date time {
+  display: inline-block;
+}
+
+/* News-specific date styling */
+.rio-blocks-news-events__item--news .rio-blocks-news-events__date {
+  font-size: 0.75rem;
+  background-color: #0056b3;
+  color: #ffffff;
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.rio-blocks-news-events__item--news .rio-blocks-news-events__date time {
+  display: inline;
+}
+
+/* Events-specific date styling */
+.rio-blocks-news-events__item--events .rio-blocks-news-events__date {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #28a745;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid #28a745;
+  padding-bottom: 0.25rem;
+  display: inline-block;
+}
+
+.rio-blocks-news-events__item--events .rio-blocks-news-events__date time {
+  display: inline;
+}
+
+.rio-blocks-news-events__item--events .rio-blocks-news-events__date--range {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+
+.rio-blocks-news-events__item--events .rio-blocks-news-events__date-separator {
+  font-size: 0.75rem;
+  color: #28a745;
+}
+
+/* Date range (events) */
+.rio-blocks-news-events__date--range {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.rio-blocks-news-events__date-separator {
+  color: #999999;
+  font-weight: 400;
+}
+
+.rio-blocks-news-events__date-start,
+.rio-blocks-news-events__date-end {
+  display: inline-block;
+}
+
+/* ============================================================
+   News and Events Block - Item Title
+   ============================================================ */
+.rio-blocks-news-events__item-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
+}
+
+.rio-blocks-news-events__item-title a {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.rio-blocks-news-events__item-title a:hover,
+.rio-blocks-news-events__item-title a:focus {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* ============================================================
+   News and Events Block - Summary
+   ============================================================ */
+.rio-blocks-news-events__summary {
+  font-size: 0.9375rem;
+  color: #444444;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.rio-blocks-news-events__summary p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   News and Events Block - Read More Link
+   ============================================================ */
+.rio-blocks-news-events__read-more {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0056b3;
+  text-decoration: none;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.rio-blocks-news-events__read-more:hover,
+.rio-blocks-news-events__read-more:focus {
+  color: #003d82;
+  text-decoration: underline;
+}
+
+/* News-specific Read More styling */
+.rio-blocks-news-events__item--news .rio-blocks-news-events__read-more {
+  color: #0056b3;
+}
+
+.rio-blocks-news-events__item--news .rio-blocks-news-events__read-more::before {
+  content: '→ ';
+}
+
+.rio-blocks-news-events__item--news .rio-blocks-news-events__read-more:hover {
+  color: #003d82;
+}
+
+/* Events-specific Read More styling */
+.rio-blocks-news-events__item--events .rio-blocks-news-events__read-more {
+  color: #28a745;
+  background-color: transparent;
+  border: 2px solid #28a745;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+}
+
+.rio-blocks-news-events__item--events .rio-blocks-news-events__read-more:hover,
+.rio-blocks-news-events__item--events .rio-blocks-news-events__read-more:focus {
+  color: #ffffff;
+  background-color: #28a745;
+  text-decoration: none;
+}
+
+.rio-blocks-news-events__item--events .rio-blocks-news-events__read-more::before {
+  content: '📅 ';
+}
+
+/* ============================================================
+   News and Events Block - Empty State
+   ============================================================ */
+.rio-blocks-news-events__empty {
+  color: #666666;
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* ============================================================
+   News and Events Block - Footer / View All
+   ============================================================ */
+.rio-blocks-news-events__footer {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.rio-blocks-view-all-link {
+  display: inline-block;
+  padding: 0.625rem 1.5rem;
+  background-color: #0056b3;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.rio-blocks-view-all-link:hover,
+.rio-blocks-view-all-link:focus {
+  background-color: #003d82;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Different View All link for events-only or mixed display */
+.rio-blocks-view-all-link--events {
+  background-color: #28a745;
+}
+
+.rio-blocks-view-all-link--events:hover,
+.rio-blocks-view-all-link--events:focus {
+  background-color: #1e7e34;
+}
+
+/* ============================================================
+   Responsive Styles
+   ============================================================ */
+@media (max-width: 768px) {
+  .rio-blocks-news-events__list {
+    grid-template-columns: 1fr;
+  }
+
+  .rio-blocks-news-events__title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .rio-blocks-news-events__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
