@@ -1,0 +1,40 @@
+block.settings.rio_blocks_news_events:
+  type: block_settings
+  label: 'News and Events Block settings'
+  mapping:
+    block_title:
+      type: label
+      label: 'Block heading title'
+    content_types:
+      type: sequence
+      label: 'Content types to display'
+      sequence:
+        type: string
+        label: 'Content type machine name'
+    filter_by_category:
+      type: boolean
+      label: 'Filter by category'
+    category_tids:
+      type: sequence
+      label: 'Category term IDs to filter by'
+      sequence:
+        type: integer
+        label: 'Term ID'
+    number_of_items:
+      type: integer
+      label: 'Number of items to display'
+    image_style:
+      type: string
+      label: 'Image style'
+    date_format:
+      type: string
+      label: 'Date format'
+    show_view_all:
+      type: boolean
+      label: 'Show View All link'
+    view_all_url:
+      type: string
+      label: 'View All URL'
+    view_all_text:
+      type: label
+      label: 'View All link text'
